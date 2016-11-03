@@ -25,7 +25,7 @@
 			<ul>
 				<li id='nav-home' class="nav selected"><a onclick="select('home');">Home</a></li>
 				<li id='nav-biology' class="nav"><a onclick="select('biology');">Computational biology</a></li>
-				<li id='nav-data' class="nav"><a onclick="select('data');">Genomic data science</a></li>
+				<li id='nav-data' class="nav"><a onclick="select('data');">Machine learning and data science</a></li>
 				<li id='nav-waves' class="nav"><a onclick="select('waves');">Waves and imaging</a></li>
 			</ul>
 		</div>
@@ -46,6 +46,7 @@
 						  <li><a href="https://liberles.cst.temple.edu/TAED/index.html" target="_blank">The Adaptive Evolution Database</a></li>
 						  <li><a href="http://ccgg.temple.edu/" target="_blank">Center for Computational Genetics and Genomics</a></li>
 						  <li><a href="https://liberles.cst.temple.edu/" target="_blank">Liberles Research Group</a></li>
+						  <li><a href="https://github.com/cognoma/" target="_blank">Project Cognoma</a></li>
 						  <li><a href="https://bio.cst.temple.edu/" target="_blank">Department of Biology, Temple University</a></li>
 						  <li><a href="http://math.mit.edu/icg/" target="_blank">Imaging and Computing Group</a></li>
 						  <li><a href="https://math.temple.edu/research/groups/applied/" target="_blank">Temple Applied Mathematics and Scientific Computing</a></li>
@@ -78,13 +79,13 @@ studying applied mathematics and scientific computing.</p>
 <div id="waves" class="page unselected">
 <h2>Waves and Imaging</h2>
 
-<p>For my graduate studies, I worked in an area known as scientific computing, specifically numerical linear algebra. I was concerned with numerically solving the sorts of equations that arose from models of physical phenomena that were described as partial differential equations. When discretized, these resulted in large systems of equations which require specialized techniques to solve. Applications typically used these models as constraints in an optimization problem.</p>
+<p>For my graduate studies, I worked in an area known as scientific computing, specifically numerical linear algebra. I was concerned with numerically solving the sorts of equations that arose from models of physical phenomena. Mathematically, these models are written down as partial differential equations. When discretized, these resulted in large systems of equations which require specialized techniques to solve. Applications typically used these models as constraints in an optimization problem.</p>
 
 <h3>Partial differential equations</h3>
-<p>Stuff about PDEs.</p>
+<p>Waves in the frequency domain are modeled by the Helmholtz equation $$ -\Delta u - \omega^2 \frac{u}{c^2} = f.$$ Here \( f \) is a source that excites a wave at frequency \( \omega \). For instance, this could be something that emits sound in acoustics, or a perturbation of the earth's subsurface via dynamite in geophysics. These evoke a response wave \( u \) which travels through a medium (air, the earth) with speed \( c \). These are depicted in three different cases below... free space (i.e., with constant speed), the Shepp-Logan phantom (a benchmark in medical imaging) and the Marmousi model (a benchmark in geophysics). Given \( f \) and \( c \), solving for \( u \) in three dimensions is a notoriously difficult problem in scientific computing.</p>
 <img class='displayed' src="images/waves.png" width="650">
 <h3>Source inversion</h3>
-<p>Stuff about source inversion.</p>
+<p>In applications one is typically not concerned with merely modeling waves for their own sake, but to serve some purpose. The first such application considered here is source inversion. Instead of having a known source \( f \), one simultaneously solves for a source that produces a desired wave \( \hat{u} \) in some subregion of the computational domain. Waves may be focused, propagating in specific directions with prescribed intensity. This has applications in weapons engineering.</p>
 <div>
 	<img class='displayed with-equation' src="images/pdeconstrained.png"/>
 	<p>PDE-constrained optimization of the Helmholtz equation (source inversion): determine \( u \) and \( f \) from the following constrained optimization problem:
@@ -94,11 +95,11 @@ $$ \begin{align}
 \frac{\partial u}{\partial \eta} - i \omega u & = 0 \mbox{ on } \partial \Omega, \\
 \mbox{supp}(f) & \subset \Omega_\text{CAA}.
 \end{align} $$
-Here \( \hat{u} \) is some desired state that we seek to create in a region of interest \( \Omega_\text{ROI} \), while only allowing our control \( f \) to be nonzero in a control allowable area \( \Omega_\text{CAA} \). Above, our desired state is a plane wave propagating away from the domain. 
+Here \( \hat{u} \) is some desired state that we seek to create in a region of interest \( \Omega_\text{ROI} \), while only allowing our control \( f \) to be nonzero in a control allowable area \( \Omega_\text{CAA} \). Above, our desired state is a plane wave propagating away from the domain. The objective function tries to drive the produced wave as close as possible to the desired wave, subject to the Helmholtz equation as a constraint to ensure that waves are being physically modelled.
 	</p>
 </div>
 <h3>Material inversion</h3>
-<p>Stuff about material inversion.</p>
+<p>In other applications, the material which dictates the speed of sound is not known either. However, data may be available from waves that have scatterred off of this material and were measured elsewhere. One sets up a similar optimization problem, except with the sound speed \( c \) now being unknown, and chosen to provide the best possible fit to the measured data. This forms the basis of many imaging techniques, particularly full-waveform inversion in seismic imaging. The resulting optimization problem is non-convex, and notoriously difficult.</p>
 <img class='displayed with-equation' src="images/fwi.png">
 <p>PDE-constrained optimization of the Helmholtz equation (material inversion): determine \( c \) and \( u_{ij} \) from the following constrained optimization problem:
 $$ \begin{align}
@@ -107,17 +108,17 @@ $$ \begin{align}
 \end{align} $$
 where \( i,j \) and \( k \) run over the number of frequencies, sources, and receivers, respectively, and \( d_{ijk} \) represents  data at receiver locations.
 
-Here \( c \) is the local speed of a wave which results from an unknown material which is to be imaged. The material is surrounded by sources that excite waves and receivers that measure the response after being scattered (upper-left). Classic techniques suffer from non-convexity of the objective and get trapped in local minima (lower-right), while lifting recovers the true solution for a wider range of parameters (upper-right). Though both methods reduce the objective function, classic methods can actually increase error as iterations proceed (lower-left).</p>
+Here \( c \) is the local speed of a wave which results from an unknown material which is to be imaged. The material is surrounded by sources that excite waves and receivers that measure the response after being scattered (upper-left). Classic techniques suffer from non-convexity of the objective and get trapped in local minima (lower-right), while a technique known as lifting recovers the true solution for a wider range of parameters (upper-right). Though both methods reduce the objective function, classic methods can actually increase error as iterations proceed (lower-left).</p>
 </div>
 			</div>
 		</div>
 		<div id="footer" class="clear">
 			<div class="ul">
 				<ul class="clear">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="biology.html">Computational biology</a></li>
-					<li><a href="data.html">Genomic data science</a></li>
-					<li><a href="waves.html">Waves and imaging</a></li>
+					<li><a onclick="select('home');">Home</a></li>
+					<li><a onclick="select('biology');">Computational biology</a></li>
+					<li><a onclick="select('data');">Machine learning and data science</a></li>
+					<li><a onclick="select('waves');">Waves and imaging</a></li>
 				</ul>
 			</div>
 		</div>

@@ -34,6 +34,7 @@ table {
 	font-size:11px;
 	text-align:left;
 }
+
 th {
 	padding:7px 10px;
 	color:#fff;
@@ -221,9 +222,8 @@ div#body {
 
 /** content+sidebar styles **/
 div#content {
+	float: left;
 	width:650px;
-}
-div#content {
 	font-size:12px;
 }
 div.column-left {
@@ -234,6 +234,7 @@ div.column-right {
 	float:right;
 }
 div#sidebar {
+	float: right;
 	width:245px;
 }
 div#sidebar ul {
