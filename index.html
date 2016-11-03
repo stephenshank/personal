@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Homepage of Stephen D. Shank</title>
+<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="wrapper">
+
+	<div id="top" class="clear">
+		<h1><a href="#">Stephen D. Shank</a></h1>
+	</div>
+	
+	<div id="core">
+		<div id="nav" class="clear">
+			<ul>
+				<li id='nav-home' class="nav selected"><a onclick="select('home');">Home</a></li>
+				<li id='nav-biology' class="nav"><a onclick="select('biology');">Computational biology</a></li>
+				<li id='nav-data' class="nav"><a onclick="select('data');">Genomic data science</a></li>
+				<li id='nav-waves' class="nav"><a onclick="select('waves');">Waves and imaging</a></li>
+			</ul>
+		</div>
+		
+		<div id="body" class="clear">
+			<div id="sidebar" class="column-right">
+				<ul>	
+					<li>
+						<audio id="song" src="song.mp3"></audio>
+						<img id="profile"class='displayed' src="images/profile.jpg" height='200' width='200' onmouseover="activate();" onmouseout="deactivate();">
+					</li>
+					
+					<li>
+		
+						<h4><span>Links</span></h4>
+						<ul>
+						  <li><a href="https://github.com/stephenshank" target="_blank">Github</a></li>
+						  <li><a href="https://liberles.cst.temple.edu/TAED/index.html" target="_blank">The Adaptive Evolution Database</a></li>
+						  <li><a href="http://ccgg.temple.edu/" target="_blank">Center for Computational Genetics and Genomics</a></li>
+						  <li><a href="https://liberles.cst.temple.edu/" target="_blank">Liberles Research Group</a></li>
+						  <li><a href="https://bio.cst.temple.edu/" target="_blank">Department of Biology, Temple University</a></li>
+						  <li><a href="http://math.mit.edu/icg/" target="_blank">Imaging and Computing Group</a></li>
+						  <li><a href="https://math.temple.edu/research/groups/applied/" target="_blank">Temple Applied Mathematics and Scientific Computing</a></li>
+						  <li><a href="https://math.temple.edu/" target="_blank">Department of Mathematics, Temple University</a></li>
+						</ul>
+		
+				</ul>
+			</div>
+			<div id="content" class="column-left">
+<div id="home" class="page selected">
+	<h2>Welcome</h2>
+
+<p>Welcome to my personal website! My name is Stephen Shank, and I am currently a postdoctoral fellow in the Department of Biology at Temple University. I received my doctorate in mathematics from Temple University,
+studying applied mathematics and scientific computing.</p>
+
+<p>This website is currently (perpetually?) under construction, so please be sure to check back later!</p>
+</div>
+
+<div id="biology" class="page unselected">
+<h2>Computational biology</h2>
+
+<p>Under construction...</p>
+</div>
+
+<div id="data" class="page unselected">
+	<h2>Machine learning and data science</h2>
+	<p>Under construction...</p>
+</div>
+
+<div id="waves" class="page unselected">
+<h2>Waves and Imaging</h2>
+
+<p>For my graduate studies, I worked in an area known as scientific computing, specifically numerical linear algebra. I was concerned with numerically solving the sorts of equations that arose from models of physical phenomena that were described as partial differential equations. When discretized, these resulted in large systems of equations which require specialized techniques to solve. Applications typically used these models as constraints in an optimization problem.</p>
+
+<h3>Partial differential equations</h3>
+<p>Stuff about PDEs.</p>
+<img class='displayed' src="images/waves.png" width="650">
+<h3>Source inversion</h3>
+<p>Stuff about source inversion.</p>
+<div>
+	<img class='displayed with-equation' src="images/pdeconstrained.png"/>
+	<p>PDE-constrained optimization of the Helmholtz equation (source inversion): determine \( u \) and \( f \) from the following constrained optimization problem:
+$$ \begin{align}
+\min_{u,f} \frac{1}{2}\| u - \hat{u} \|_{L_2(\Omega_\text{ROI})}^2 & + \frac{\beta}{2} \| f \|_{L_2(\Omega)}^2 \\
+\mbox{ such that } -\Delta u - \omega^2 u & = f \mbox{ in } \Omega, \\
+\frac{\partial u}{\partial \eta} - i \omega u & = 0 \mbox{ on } \partial \Omega, \\
+\mbox{supp}(f) & \subset \Omega_\text{CAA}.
+\end{align} $$
+Here \( \hat{u} \) is some desired state that we seek to create in a region of interest \( \Omega_\text{ROI} \), while only allowing our control \( f \) to be nonzero in a control allowable area \( \Omega_\text{CAA} \). Above, our desired state is a plane wave propagating away from the domain. 
+	</p>
+</div>
+<h3>Material inversion</h3>
+<p>Stuff about material inversion.</p>
+<img class='displayed with-equation' src="images/fwi.png">
+<p>PDE-constrained optimization of the Helmholtz equation (material inversion): determine \( c \) and \( u_{ij} \) from the following constrained optimization problem:
+$$ \begin{align}
+\min_{c, u_{ij}} \frac{1}{2} \sum_{i,j,k} | u_{ij}(x_k) & - d_{ijk} |^2 \\
+\mbox{ such that } -\Delta u_{ij} - \frac{\omega_i^2}{c^2} u_{ij} & = f_j \mbox{ in } \Omega,
+\end{align} $$
+where \( i,j \) and \( k \) run over the number of frequencies, sources, and receivers, respectively, and \( d_{ijk} \) represents  data at receiver locations.
+
+Here \( c \) is the local speed of a wave which results from an unknown material which is to be imaged. The material is surrounded by sources that excite waves and receivers that measure the response after being scattered (upper-left). Classic techniques suffer from non-convexity of the objective and get trapped in local minima (lower-right), while lifting recovers the true solution for a wider range of parameters (upper-right). Though both methods reduce the objective function, classic methods can actually increase error as iterations proceed (lower-left).</p>
+</div>
+			</div>
+		</div>
+		<div id="footer" class="clear">
+			<div class="ul">
+				<ul class="clear">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="biology.html">Computational biology</a></li>
+					<li><a href="data.html">Genomic data science</a></li>
+					<li><a href="waves.html">Waves and imaging</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<p class="footer-links">
+		&copy; 2009 sitename. Design by <a href="http://www.spyka.net">Free CSS Templates</a> and <a href="http://www.justfreetemplates.com">Free Web Templates</a>
+	</p>
+</div>
+</body>
+</html>
