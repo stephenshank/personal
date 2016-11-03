@@ -18,6 +18,12 @@ body {
     width: 400px;
 }
 
+.with-subplot {
+    float: right;
+    margin: 0 0 10px 10px;
+    width: 200px;
+}
+
 div.unselected{
 	display: none;
 }
@@ -25,7 +31,8 @@ div.unselected{
 img.displayed {
     display: block;
     margin-left: auto;
-    margin-right: auto }
+    margin-right: auto
+}
 
 /** element defaults **/
 table {
