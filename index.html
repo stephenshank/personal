@@ -30,7 +30,10 @@
               <a onclick="select('biology');">Computational biology</a>
             </li>
             <li id="nav-data" class="nav">
-              <a onclick="select('data');">Machine learning and data science</a>
+              <a onclick="select('data');">Data science</a>
+            </li>
+            <li id="nav-manufacturing" class="nav">
+              <a onclick="select('manufacturing');">Manufacturing</a>
             </li>
             <li id="nav-waves" class="nav">
               <a onclick="select('waves');">Waves and imaging</a>
@@ -119,8 +122,9 @@
                 am currently a software developer, working for the Institute for
                 Genomics and Evolutionary Medicine as part of the Department of
                 Biology at Temple University. I received my doctorate in
-                mathematics from Temple University, applied mathematics and
-                scientific computing.
+                mathematics from Temple University, specializing in applied mathematics and
+                scientific computing. I love working with data, including building
+                custom models and designing production grade software.
               </p>
 
               <p>
@@ -140,8 +144,13 @@
                 computational biology. I worked in phylogenetics, specifically
                 in protein evolution. I built models of how proteins evolve,
                 with the goal of detecting selective pressures on different
-                sites. This involves a lot of mathematical modeling, and
-                crunching a lot of genomic data.
+                sites. This involved a lot of mathematical modeling, and
+                crunching a lot of genomic data. I currently work as a software
+                developer in the Pond lab at the Institute for Genomics and
+                Evolutionary Medicine. I perform research and develop software for the NIH 
+                and CDC. Specifically, I work on next-generation sequencing of HIV and SARS-CoV-2
+                for the Galaxy platform, and Secure HIV-TraCE, a platform for
+                HIV cluster detection and response from genomic data.
               </p>
 
               <p>
@@ -287,6 +296,69 @@
                   effects.
                 </p>
               </div>
+            </div>
+
+            <div id="manufacturing" class="page unselected">
+              <h2>Manufacturing</h2>
+              <p>
+              Many specialists in AI believe manufacturing is ripe for disruption
+              by it. I have a lifelong friend in manufacturing, and have dabbled in
+              it as a hobby. I see extraordinary potential for data-scientific
+              thinking as a way to add value. Below are two success stories for
+              data-driven thinking when making cardboard boxes.
+              </p>
+
+              <h3>Statistics as epistemology</h3>
+              <p>
+              Domain experts in manufacturing have intuitions about their processes,
+              but they are often quite complex with many open questions. Statistical techniques
+              (often advocated for in methodologies like Six Sigma) are capable of
+              providing insight into relevant questions with real business value.
+              For example, routine strength testing of products is performed, and one
+              can hypothesize about the various configurations of machine states and
+              their effect on the outcomes of such tests. I was proud to design a system
+              to store the results of lab tests by technicians, cross reference this with
+              sensor data regarding machine state, and derive a statistically
+              significant result that resulted in stronger products. I love designing
+              visualizations that convey these results to non technical audiences. Shown
+              below are the results of so-called PIN adhesion tests in the manufacture
+              of boxes (higher is better), colored according to two difference machine states.
+              The p-value of a Wilcoxon rank-sum test was .007. Statistics was like a
+              candle in the dark, providing evidence to know that running the machine
+              in one state would result in a stronger product.
+              </p>
+              <img
+                class="displayed"
+                width="650"
+                src="images/significant.png"
+              />
+
+
+              <h3>Sensor dashboards</h3>
+              <p>
+              Cardboard boxes are made from three rolls of paper, joined to one to form
+              corrugated board. A roll is often "spliced" in to replace one that has been
+              depleted without bringing the entire process to a stop. The speed at which
+              the splice is performed has implications for efficiency and waste. At faster
+              speeds it is more difficult, resulting in more "missed" splices. At lower speeds,
+              more paper is wasted. There is a tradeoff here, to determine what an optimal speed
+              is that will result in enough up time to fulfill orders while wasting as little
+              paper as possible. I designed a dashboard to visualize the results of splices,
+              using machine speed and the state of various roll stations that changed when
+              one roll was changed to another. This aided management in making decisions
+              and training, and is pictured below.
+              </p>
+
+              <img
+                class="displayed"
+                width="650"
+                src="images/exploration.png"
+              />
+              <img
+                class="displayed"
+                width="650"
+                src="images/dailyreport.png"
+              />
             </div>
 
             <div id="data" class="page unselected">
